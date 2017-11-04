@@ -6,7 +6,7 @@ return [
     'error' => 'Error',
     'success' => 'Success',
     'theme' => 'Theme',
-    'copyright' => 'Copyright :year &copy; :company. Version: <span>:version</span>',
+    'copyright' => 'Copyright :year &copy; :company.',
     'profile' => 'Profile',
     'logout' => 'Logout',
     'no_search_result' => 'No results found, please try with different keywords.',
