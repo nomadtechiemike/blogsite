@@ -5,7 +5,7 @@ Route::group(['namespace' => 'Botble\MenuLeftHand\Http\Controllers', 'middleware
     Route::group(['prefix' => config('cms.admin_dir'), 'middleware' => 'auth'], function () {
 
         Route::group(['prefix' => 'menu-left-hand', 'permission' => 'superuser'], function () {
-
+        	
             Route::get('/edit', [
                 'as' => 'system.menu.left-hand',
                 'uses' => 'MenuLeftHandController@getEdit',

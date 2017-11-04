@@ -4,6 +4,11 @@ namespace Botble\Base\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Botble\ACL\Repositories\Interfaces\UserInterface;
+
+use Botble\ACL\Repositories\Interfaces\InviteInterface;
+use Botble\ACL\Repositories\Interfaces\RoleInterface;
+use Botble\ACL\Repositories\Interfaces\RoleUserInterface;
+
 use Botble\Base\Supports\Helper;
 use Botble\Blog\Repositories\Interfaces\CategoryInterface;
 use Botble\Blog\Repositories\Interfaces\PostInterface;
@@ -12,9 +17,47 @@ use Botble\Page\Repositories\Interfaces\PageInterface;
 use Illuminate\Http\Request;
 use SeoHelper;
 use Theme;
+use Botble\ACL\Models\User;
+use Validator;
+use EmailHandler;
+use Sentinel;
+use Storage;
+use Exception;
+use Botble\ACL\Models\UserMeta;
+use Session;
 
 class PublicController extends Controller
 {
+	
+	/**
+	 * @var UserInterface
+	 */
+	protected $userRepository;
+	
+	/**
+	 * @var RoleUserInterface
+	 */
+	protected $roleUserRepository;
+	
+	/**
+	 * @var RoleInterface
+	 */
+	protected $roleRepository;
+	
+	/**
+	 * @var InviteInterface
+	 */
+	protected $inviteRepository;
+	
+	
+	public function __construct(UserInterface $userRepository, RoleUserInterface $roleUserRepository, RoleInterface $roleRepository, InviteInterface $inviteRepository)
+	{
+		$this->userRepository = $userRepository;
+		$this->roleUserRepository = $roleUserRepository;
+		$this->roleRepository = $roleRepository;
+		$this->inviteRepository = $inviteRepository;
+	}
+	
 
     /**
      * @return mixed
@@ -80,6 +123,75 @@ class PublicController extends Controller
         }
         return abort(404);
     }
+    
+    public function getRegister(){
+    	Theme::breadcrumb()->add('Home', route('public.register'));
+    	return Theme::scope('auth.signup.index')->render();
+    }
+    
+    public function postRegister(Request $request)
+    {
+    	$validator = Validator::make($request->all(), [
+    			'first_name' => 'required',
+    			'last_name' => 'required',
+    			'username' => 'required',
+    			'email' => 'unique:users,email',
+    			'phone' => 'required',
+    			'password' => 'required|confirmed',
+    			'g-recaptcha-response' => 'required',
+    	]);
+    	if ($validator->fails()) {
+    		return back()->withErrors($validator)->withInput();
+    	}
+    	
+    	$user = $this->userRepository->getFirstBy(['email' => $request->input('email')]);
+    	
+    	$token = str_random(32);
+    	
+    	if (!$user) {
+    		$user = $this->userRepository->getModel();
+    		$user->email = $request->input('email');
+    		$user->first_name = $request->input('first_name');
+    		$user->last_name = $request->input('last_name');
+    		$user->username = $request->input('username');
+    		$user->profile_image = config('acl.avatar.default');
+    		
+    		$this->userRepository->createOrUpdate($user);
+    		
+    		$this->sentEmailInvite([
+    				'user' => $user->username,
+    				'token' => $token,
+    				'email' => $user->email,
+    				'content' => '',
+    				'name' => $user->getFullName(),
+    		], [
+    				'name' => $user->getFullName(),
+    				'to' => $user->email,
+    		]);
+    		
+    		$newInvite = $this->inviteRepository->getModel();
+    		
+    		$newInvite->token = $token;
+    		$newInvite->user_id = 1;
+    		$newInvite->invitee_id = $user->id;
+    		$newInvite->role_id = 2;
+    		$this->inviteRepository->createOrUpdate($newInvite);
+    		
+    		Session::flash('message', 'Your account has been created. Activation link sent by email, Please Check and Activate.');
+    		Session::flash('alert-class', 'alert-success'); 
+    		
+    		return back()->with(['success' => 1, 'message' => "Your account has been created. Activation link sent by email, Please Check and Activate."]);
+    	} 
+    	
+    	
+    }
+    
+    
+    protected function sentEmailInvite($data, $args = [])
+    {
+    	EmailHandler::send(view('acl::emails.invite', compact('data'))->render(), 'Activate your Account', $args);
+    }
+    
 
     /**
      * @param $slug

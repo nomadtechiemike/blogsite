@@ -19,4 +19,5 @@ class Invite extends Eloquent
      * @var array
      */
     protected $dates = ['created_at', 'updated_at'];
+    
 }

@@ -4,7 +4,7 @@ Route::group(['namespace' => 'Botble\Setting\Http\Controllers', 'middleware' => 
 
     Route::group(['prefix' => env('ADMIN_DIR'), 'middleware' => 'auth'], function () {
         Route::group(['prefix' => 'settings'], function () {
-
+        	
             Route::get('/', [
                 'as' => 'settings.options',
                 'uses' => 'SettingController@getOptions',

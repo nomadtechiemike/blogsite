@@ -35,6 +35,8 @@
                     </ul>
                 </li>
             @endif
+           
+           <?php /** 
             @if (setting()->get('enable_multi_language_in_admin') != false)
                 <li class="language dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -58,10 +60,10 @@
                                 </li>
                             @endif
                         @endforeach
-
                     </ul>
                 </li>
             @endif
+            **/ ?>
         </ul>
     </div>
     <!-- /navbar -->

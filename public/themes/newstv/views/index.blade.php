@@ -1,7 +1,6 @@
 @foreach (get_all_categories(['categories.status' => 1, 'categories.parent_id' => 0, 'featured' => 1]) as $category)
     @php
         $allRelatedCategoryIds = array_unique(array_merge(app(\Botble\Blog\Repositories\Interfaces\CategoryInterface::class)->getAllRelatedChildrenIds($category), [$category->id]));
-
         $posts = app(\Botble\Blog\Repositories\Interfaces\PostInterface::class)->getByCategory($allRelatedCategoryIds, 0, $loop->index % 2 == 0 ? 6 : 5);
     @endphp
     <section class="main-box">

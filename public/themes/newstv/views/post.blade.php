@@ -1,3 +1,14 @@
+<?php
+use risul\LaravelLikeComment\Facade\LaravelLikeComment;
+?>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
+    <link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet">
+    <style>
+    .ui.comments .comment .avatar img, .ui.comments .comment img.avatar {width: 38px !important; height: 38px !important;}
+    </style>
 <section class="main-box">
     <div class="main-box-header">
         {!! Theme::breadcrumb()->render() !!}
@@ -52,17 +63,23 @@
             <h4 class="article-content-subtitle">
                 {{ __('Comments') }}
             </h4>
+
             <div class="facebook-comment">
                 @if (is_plugin_active('comment'))
                     <div id="my-comments"></div>
                     {!! render_comment_block('#my-comments', Request::url()) !!}
                 @else
-                    <div class="fb-comments" data-href="{{ Request::url() }}" data-numposts="5"></div>
+                   {{-- <div class="fb-comments" data-href="{{ Request::url() }}" data-numposts="5"></div> --}}
+                   @include('laravelLikeComment::like', ['like_item_id' => $post->id])
+                   @include('laravelLikeComment::comment', ['comment_item_id' => $post->id])
+                   
                 @endif
             </div>
         </div>
     </div>
 </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script>
 <section class="main-box">
     <div class="main-box-header">
         <h2><i class="fa fa-leaf"></i> {{ __('Related posts') }}</h2>

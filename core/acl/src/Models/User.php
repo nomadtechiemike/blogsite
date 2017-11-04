@@ -6,6 +6,7 @@ use Botble\Note\Models\Note;
 use Botble\Blog\Models\Post;
 use Cartalyst\Sentinel\Users\EloquentUser;
 
+
 class User extends EloquentUser
 {
 
@@ -203,5 +204,25 @@ class User extends EloquentUser
             'url' => $this->website,    // optional
             'avatar' => 'gravatar', // optional
         ];
+    }
+    
+    /**
+     * Return the user attributes.
+     
+     * @return array
+     */
+    public static function getAuthor($id)
+    {
+    	$user = self::find($id);
+    	return [
+    			'id'     => $user->id,
+    			'first_name' => $user->first_name,
+    			'last_name' => $user->last_name,
+    			'name'   => $user->username,
+    			'email'  => $user->email,
+    			'url'    => '',  // Optional
+    			'avatar' => 'gravatar',  // Default avatar
+    			'admin'  => $user->role === 'admin', // bool
+    	];
     }
 }

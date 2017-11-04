@@ -54,6 +54,10 @@ return [
             $theme->asset()->usePath()->add('red-theme-css', 'css/' . ThemeOption::getOption('theme_color', 'red') . '.css', [], ['id' => 'style_color']);
             $theme->asset()->usePath()->add('demo-css', 'css/demo.min.css');
             $theme->asset()->usePath()->add('custom-css', 'css/custom.css');
+            $theme->asset()->usePath()->add('comment-css', 'css/comment.min.css');
+            $theme->asset()->usePath()->add('form-css', 'css/form.min.css');
+            $theme->asset()->usePath()->add('button-css', 'css/button.min.css');
+            
 
             $theme->composer(['page', 'post'], function($view) {
                 $view->withShortcodes();

@@ -23,7 +23,7 @@ class Role extends EloquentRole
      * @var array
      */
     protected $dates = ['created_at', 'updated_at'];
-
+    
     /**
      * Returns the list of flags that belong to this role
      *

@@ -5,8 +5,8 @@ Route::group(['namespace' => 'Botble\Base\Http\Controllers', 'middleware' => 'we
     Route::group(['prefix' => config('cms.admin_dir'), 'middleware' => 'auth', 'permission' => 'superuser'], function () {
 
         Route::group(['prefix' => 'system'], function () {
-
-            Route::get('/', [
+        	
+        	Route::get('/', [
                 'as' => 'system.options',
                 'uses' => 'SystemController@getOptions',
             ]);

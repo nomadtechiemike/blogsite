@@ -4,6 +4,7 @@ Route::group(['namespace' => 'Botble\Dashboard\Http\Controllers', 'middleware' =
 
     Route::group(['prefix' => config('cms.admin_dir'), 'middleware' => 'auth'], function () {
 
+   	
         Route::get('/', [
             'as' => 'dashboard.index',
             'uses' => 'DashboardController@getDashboard',

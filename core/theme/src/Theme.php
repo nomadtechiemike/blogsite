@@ -152,7 +152,7 @@ class Theme implements ThemeContract
         // Blade compiler.
         $this->compilers = new BladeCompiler($files, 'theme');
 
-        self::uses(setting('theme'))->layout(setting('layout', 'default'));
+       	self::uses(setting('theme'))->layout(setting('layout', 'default'));
 
         foreach (app(WidgetInterface::class)->getByTheme() as $widget) {
             WidgetGroup::group($widget->sidebar_id)->position($widget->position)->addWidget($widget->widget_id, $widget->data);
@@ -240,11 +240,12 @@ class Theme implements ThemeContract
      */
     public function getConfig($key = null)
     {
+    	
         // Main package config.
         if (!$this->themeConfig) {
             $this->themeConfig = $this->config->get('theme');
         }
-
+        
         // Config inside a public theme.
         // This config having buffer by array object.
         if ($this->theme && !isset($this->themeConfig['themes'][$this->theme])) {
@@ -252,13 +253,16 @@ class Theme implements ThemeContract
 
             // Require public theme config.
             $minorConfigPath = public_path($this->themeConfig['themeDir'] . '/' . $this->theme . '/config.php');
-
+           
             $this->themeConfig['themes'][$this->theme] = $this->files->getRequire($minorConfigPath);
         }
 
+        
+        
         // Evaluate theme config.
         $this->themeConfig = $this->evaluateConfig($this->themeConfig);
 
+        
         return empty($key) ? $this->themeConfig : array_get($this->themeConfig, $key);
     }
 
@@ -280,16 +284,18 @@ class Theme implements ThemeContract
 
         // Config inside a public theme.
         $minorConfig = $config['themes'][$this->theme];
-
+        
+        
         // Before event is special case, It's combination.
         if (isset($minorConfig['events']['before'])) {
             $minorConfig['events']['appendBefore'] = $minorConfig['events']['before'];
             unset($minorConfig['events']['before']);
         }
 
+        
         // Merge two config into one.
         $config = array_replace_recursive($config, $minorConfig);
-
+        
         // Reset theme config.
         $config['themes'][$this->theme] = [];
 
@@ -809,10 +815,9 @@ class Theme implements ThemeContract
      */
     public function setUpContent($view, $args = [])
     {
-
         // Fire event global assets.
         $this->fire('asset', $this->asset);
-
+		
         // Fire event before render theme.
         $this->fire('beforeRenderTheme', $this);
 
@@ -822,7 +827,9 @@ class Theme implements ThemeContract
         // Keeping arguments.
         $this->arguments = $args;
 
+        
         $content = $this->view->make($view, $args)->render();
+        
 
         // View path of content.
         $this->content = $view;
@@ -851,7 +858,7 @@ class Theme implements ThemeContract
 
         // Add namespace to find in a theme path.
         $path = $this->getThemeNamespace($viewDir . '.' . $view);
-
+        
         $this->checkViewExists($path);
 
         return $this->setUpContent($path, $args);
@@ -946,6 +953,7 @@ class Theme implements ThemeContract
     {
         // Fire the event before render.
         $this->fire('after', $this);
+        
 
         // Flush asset that need to serve.
         $this->asset->flush();
@@ -954,7 +962,6 @@ class Theme implements ThemeContract
         $layoutDir = $this->getConfig('containerDir.layout');
 
         $path = $this->getThemeNamespace($layoutDir . '.' . $this->layout);
-
         $this->checkViewExists($path);
 
         $content = $this->view->make($path)->render();

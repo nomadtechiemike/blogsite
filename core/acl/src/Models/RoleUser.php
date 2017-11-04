@@ -20,4 +20,6 @@ class RoleUser extends Eloquent
      * @var array
      */
     protected $dates = ['created_at', 'updated_at'];
+    
+    protected $fillable = ['user_id', 'role_id'];
 }

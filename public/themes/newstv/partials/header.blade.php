@@ -11,10 +11,16 @@
                     !!}
 
                     <div class="pull-right">
-                        <div class="hi-icon-wrap hi-icon-effect-3 hi-icon-effect-3a">
-                            <a href="{{ setting('facebook') }}" title="Facebook" class="hi-icon fa fa-facebook"></a>
-                            <a href="{{ setting('twitter') }}" title="Twitter" class="hi-icon fa fa-google-plus"></a>
-                            <a href="{{ setting('google_plus') }}" title="Google" class="hi-icon fa fa-youtube"></a>
+                        <div>
+                        	<ul>
+                        	@if(!Sentinel::check())
+                        		<li><a href="{{ url('/register.html') }}"><span>Register</span></a></li>
+                        		<li><a href="{{ url('/admin/login') }}"><span>Login</span></a></li>
+                        	@else
+                        		<li><a href="{{ url('/admin/users/profile/'.Sentinel::check()->id) }}"><span>{{ Sentinel::check()->username }}</span></a></li>
+                        		<li><a href="{{ url('/admin/logout') }}"><span>Logout</span></a></li>
+                        	@endif
+                        	</ul>
                         </div>
                     </div>
                 </div>

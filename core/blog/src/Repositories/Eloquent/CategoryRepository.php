@@ -83,7 +83,7 @@ class CategoryRepository extends RepositoriesAbstract implements CategoryInterfa
             $data = $data->where($condition);
         }
 
-        return apply_filters(BASE_FILTER_BEFORE_GET_FRONT_PAGE_ITEM, $data, $this->model, CATEGORY_MODULE_SCREEN_NAME)
+       return apply_filters(BASE_FILTER_BEFORE_GET_FRONT_PAGE_ITEM, $data, $this->model, CATEGORY_MODULE_SCREEN_NAME)
             ->get();
     }
 
@@ -135,6 +135,7 @@ class CategoryRepository extends RepositoriesAbstract implements CategoryInterfa
             $result[] = $child->id;
             $result = array_merge($this->getAllRelatedChildrenIds($child), $result);
         }
+
         return array_unique($result);
     }
 }

@@ -1,6 +1,18 @@
 @extends('acl::auth.master')
 
 @section('content')
+<style>
+.hm{
+    float: right;
+    font-size: 15px;
+    background-color: #1975ae;
+    color: #fff;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+
+</style>
     {!! Form::open(['route' => 'access.login', 'class' => 'login-form']) !!}
         <h3 class="form-title font-green">{{ trans('acl::auth.login_title') }}</h3>
         <div class="alert alert-danger display-hide">
@@ -33,23 +45,11 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">{{ trans('acl::auth.login.login') }}</button>
+            <button type="submit" class="btn btn-primary">{{ trans('acl::auth.login.login') }}</button> <a class="hm" href="{{ url('/') }}">Home</a>
         </div>
 
-        <div class="login-options">
-            <h4>{{ trans('acl::auth.login_via_social') }}</h4>
-            <ul class="social-icons">
-                <li>
-                    <a class="social-icon-color facebook" data-original-title="facebook" href="{{ route('auth.social', 'facebook') }}"></a>
-                </li>
-                <li>
-                    <a class="social-icon-color googleplus" data-original-title="Google Plus" href="{{ route('auth.social', 'google') }}"></a>
-                </li>
-                <li>
-                    <a class="social-icon-color github" data-original-title="Github" href="{{ route('auth.social', 'github') }}"></a>
-                </li>
-            </ul>
-        </div>
+
+
 
     {!! Form::close() !!}
 @stop

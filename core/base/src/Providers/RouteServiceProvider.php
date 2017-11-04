@@ -32,6 +32,17 @@ class RouteServiceProvider extends ServiceProvider
                     'as' => 'public.index',
                     'uses' => 'PublicController@getIndex',
                 ]);
+                
+                $this->get('/register.html', [
+                		'as' => 'public.register',
+                		'uses' => 'PublicController@getRegister',
+                ]);
+
+                $this->post('/register.html', [
+                		'as' => 'public.register.user',
+                		'uses' => 'PublicController@postRegister',
+                ]);
+                
 
                 $this->get('/{slug}.html', [
                     'as' => 'public.single.detail',
@@ -62,6 +73,8 @@ class RouteServiceProvider extends ServiceProvider
                     'as' => 'public.sitemap',
                     'uses' => 'PublicController@getSitemap',
                 ]);
+                
+                
 
             });
         });

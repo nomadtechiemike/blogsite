@@ -37,18 +37,8 @@
         </div>
 
         <div class="login-options">
-            <h4>{{ trans('acl::auth.login_via_social') }}</h4>
-            <ul class="social-icons">
-                <li>
-                    <a class="social-icon-color facebook" data-original-title="facebook" href="{{ route('auth.social', 'facebook') }}"></a>
-                </li>
-                <li>
-                    <a class="social-icon-color googleplus" data-original-title="Google Plus" href="{{ route('auth.social', 'google') }}"></a>
-                </li>
-                <li>
-                    <a class="social-icon-color github" data-original-title="Github" href="{{ route('auth.social', 'github') }}"></a>
-                </li>
-            </ul>
+            <h4><a href="{{ url('/') }}">Home</a></h4>
+            
         </div>
 
     {!! Form::close() !!}

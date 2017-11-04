@@ -38,7 +38,7 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
      */
     public function getBySlug($slug, $status)
     {
-        $data = $this->model->where(['posts.status' => $status, 'posts.slug' => $slug])
+    	$data = $this->model->where(['posts.status' => $status, 'posts.slug' => $slug])
             ->select('posts.*')->first();
         return apply_filters(BASE_FILTER_BEFORE_GET_BY_SLUG, $data, $this->model, POST_MODULE_SCREEN_NAME);
     }

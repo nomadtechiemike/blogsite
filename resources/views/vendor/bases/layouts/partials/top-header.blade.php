@@ -7,7 +7,7 @@
             <i class="icon icon-menu"></i>
         </button>
         <a class="navbar-brand" href="{{ route('dashboard.index') }}">
-            <span>Bot</span>ble
+            <span>Simple </span> Blog
         </a>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-icons">
             <span class="sr-only">Toggle navbar</span>

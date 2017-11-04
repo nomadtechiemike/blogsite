@@ -5,7 +5,8 @@ Route::group(['namespace' => 'Botble\ACL\Http\Controllers', 'middleware' => 'web
     Route::group(['prefix' => config('cms.admin_dir')], function () {
 
         Route::group(['middleware' => 'guest'], function () {
-
+        	
+        	
             Route::get('/login', [
                 'as' => 'access.login',
                 'uses' => 'AuthController@getLogin',

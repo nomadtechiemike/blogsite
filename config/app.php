@@ -191,6 +191,8 @@ return [
 
         /*======================= BOTBLE SERVICES =========================*/
         Botble\Base\Providers\BaseServiceProvider::class,
+    	risul\LaravelLikeComment\LikeCommentServiceProvider::class,
+    	Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class
 
     ],
 
@@ -254,6 +256,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
         'Countries'=> PragmaRX\Countries\Facade::class,
+    	'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
 
     ],
 

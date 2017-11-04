@@ -185,7 +185,7 @@
                                         </div>
                                         <div class="form-group @if ($errors->has('skype')) has-error @endif">
                                             <label for="skype" class="control-label">Skype</label>
-                                            {!! Form::text('skype', $user->skype, ['class' => 'form-control', 'id' => 'skype', 'placeholder' => 'minhsang2603', 'data-counter' => 60]) !!}
+                                            {!! Form::text('skype', $user->skype, ['class' => 'form-control', 'id' => 'skype', 'placeholder' => '', 'data-counter' => 60]) !!}
                                         </div>
                                         <div class="form-group @if ($errors->has('facebook')) has-error @endif">
                                             <label for="facebook" class="control-label">Facebook</label>

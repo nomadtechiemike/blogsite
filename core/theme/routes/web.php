@@ -5,7 +5,7 @@ Route::group(['namespace' => 'Botble\Theme\Http\Controllers', 'middleware' => 'w
     Route::group(['prefix' => config('cms.admin_dir'), 'middleware' => 'auth'], function () {
         Route::group(['prefix' => 'theme'], function () {
 
-            Route::get('/', [
+        	Route::get('/', [
                 'as' => 'theme.list',
                 'uses' => 'ThemeController@getList',
             ]);
