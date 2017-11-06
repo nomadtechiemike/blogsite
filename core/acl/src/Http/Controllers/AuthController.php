@@ -1,5 +1,4 @@
 <?php
-
 namespace Botble\ACL\Http\Controllers;
 
 use Botble\ACL\Events\RoleAssignmentEvent;
@@ -23,6 +22,7 @@ use Illuminate\Http\Request;
 use Sentinel;
 use Socialite;
 use Exception;
+use Hash;
 
 class AuthController extends Controller
 {
@@ -299,13 +299,19 @@ class AuthController extends Controller
 
         $user = $this->userRepository->findById($invite->invitee_id);
         if (!$user) {
-            return redirect()->route('invite.accept')->with('error_msg', trans('acl::users.invite_not_exist'));
+            return redirect()->route('invite.accept')->with('error_msg', trans('acl::users.Invalid_token'));
         }
-
+        
         $credentials = [
-            'username' => $request->input('username'),
-            'password' => $request->input('password'),
+        		'email' => $user->email,
+        		'password' => $request->input('password'),
         ];
+        
+        if(!Hash::check($request->input('password'), $user->password)){
+        	return redirect()->route('invite.accept', $token)->with('error_msg', trans('acl::users.password_not_match'));
+        }
+        
+        
         if (Sentinel::validForCreation($credentials)) {
             $user = Sentinel::update($user, $credentials);
 

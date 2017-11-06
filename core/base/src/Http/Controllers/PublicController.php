@@ -1,5 +1,4 @@
 <?php
-
 namespace Botble\Base\Http\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -25,6 +24,7 @@ use Storage;
 use Exception;
 use Botble\ACL\Models\UserMeta;
 use Session;
+use Hash;
 
 class PublicController extends Controller
 {
@@ -134,8 +134,8 @@ class PublicController extends Controller
     	$validator = Validator::make($request->all(), [
     			'first_name' => 'required',
     			'last_name' => 'required',
-    			'username' => 'required',
-    			'email' => 'unique:users,email',
+    			'username' => 'required|unique:users,username',
+    			'email' => 'required|unique:users,email',
     			'phone' => 'required',
     			'password' => 'required|confirmed',
     			'g-recaptcha-response' => 'required',
@@ -154,6 +154,7 @@ class PublicController extends Controller
     		$user->first_name = $request->input('first_name');
     		$user->last_name = $request->input('last_name');
     		$user->username = $request->input('username');
+    		$user->password = Hash::make( $request->input('password'));
     		$user->profile_image = config('acl.avatar.default');
     		
     		$this->userRepository->createOrUpdate($user);
