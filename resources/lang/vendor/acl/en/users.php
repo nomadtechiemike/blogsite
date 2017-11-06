@@ -37,6 +37,7 @@ return [
     'list' => 'List Users',
     'last_login' => 'Last Login',
     'error_update_profile_image' => 'Error when update profile image',
+		'email_register_template' => '<h3>Hello :name</h3><p>Please kindly click the button below to confirm your ad. The button link redirects you to the classic version of our web site based on the device you are using:<p><a href=":link">Register now</a></p>',
     'email_invite_template' => '<h3>Hello :name</h3><p>You are invited to be a user in :site_title.</p><p>The sender included the following message with this invitation:</p><p>":content"</p><p>Please click this link to accept invite and join with us: <a href=":link">Join now</a></p>',
     'email_reminder_template' => '<h3>Hello :name</h3><p>The system has received a request to restore the password for your account, to complete this task please click the link below.</p><p><a href=":link">Reset password now</a></p><p>If not you ask recover password, please ignore this email.</p><p>This email is valid for 60 minutes after receiving the email.</p>',
     'change_profile_image' => 'Change Profile Image',
