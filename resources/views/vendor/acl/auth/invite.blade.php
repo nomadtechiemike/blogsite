@@ -20,8 +20,8 @@
                     {!! Form::text('username', old('username'), ['class' => 'form-control', 'id' => 'username', 'placeholder' => trans('acl::users.username')]) !!}
                 </div> -->
                 <div class="form-group has-feedback">
-                    <label>{{ trans('acl::users.new_password') }}</label>
-                    {!! Form::password('password', ['class' => 'form-control placeholder-no-fix', 'placeholder' => trans('acl::auth.reset.new-password')]) !!}
+                    <label>{{ trans('acl::users.retype_password') }}</label>
+                    {!! Form::password('password', ['class' => 'form-control placeholder-no-fix', 'placeholder' => trans('acl::auth.reset.retype_password')]) !!}
                     <i class="icon icon-lock form-control-feedback"></i>
                 </div>
 

@@ -62,7 +62,9 @@ class MenuLeftHand extends Node
             }
 
             if ($currentRootNode != null) {
+            	
                 $defaultTree = $currentRootNode->getImmediateDescendants();
+                
                 if (isset($defaultTree)) {
                     $indexTree = 0;
                     foreach ($defaultTree as $immediateDescendant) {
@@ -78,6 +80,8 @@ class MenuLeftHand extends Node
                         } else {
                             $arMenu[$indexTree]['route'] = '#';
                         }
+                        
+                        
 
                         $arMenu[$indexTree]['sequence'] = $indexTree;
                         $arMenu[$indexTree]['feature_id'] = $immediateDescendant->feature_id;

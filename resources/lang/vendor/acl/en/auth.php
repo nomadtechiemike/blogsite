@@ -28,6 +28,7 @@ return [
     'reset' =>
         [
             'new_password' => 'New password',
+        	'retype_password' => 'Retype Password',
             'repassword' => 'Confirm new password',
             'title' => 'Reset your password',
             'update' => 'Update',

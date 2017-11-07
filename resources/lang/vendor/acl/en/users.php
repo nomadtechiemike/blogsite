@@ -31,6 +31,7 @@ return [
     'message' => 'Message',
     'cancel_btn' => 'Cancel',
     'invite_btn' => 'Invite',
+	'retype_password' => 'Retype Password',
     'new_password' => 'New Password',
     'confirm_new_password' => 'Confirm New Password',
     'password' => 'Password',

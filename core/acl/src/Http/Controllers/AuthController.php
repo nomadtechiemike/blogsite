@@ -118,6 +118,10 @@ class AuthController extends Controller
                         session()->flash('url.intended', url()->current());
                     }
                     do_action(AUTH_ACTION_AFTER_LOGIN_SYSTEM, AUTH_MODULE_SCREEN_NAME, $request, Sentinel::getUser());
+                    if(!Sentinel::getUser()->isSuperUser()){
+                    	return redirect()->route('user.profile.view', Sentinel::getUser()->id)->with('success_msg', trans('acl::auth.login.success'));
+                    }
+					                    
                     return redirect()->intended()->with('success_msg', trans('acl::auth.login.success'));
                 }
             } catch (ThrottlingException $e) {
@@ -333,6 +337,11 @@ class AuthController extends Controller
 
             Sentinel::authenticateAndRemember($credentials);
         }
-        return redirect()->route('dashboard.index')->with('success_msg', trans('acl::users.accept_invite_success'));
+        
+        if(!Sentinel::getUser()->isSuperUser()){
+        	return redirect()->route('user.profile.view', Sentinel::getUser()->id)->with('success_msg', trans('acl::auth.login.success'));
+        }
+        
+        return redirect()->route('dashboard.index')->with('success_msg', trans('acl::auth.login.success'));
     }
 }
