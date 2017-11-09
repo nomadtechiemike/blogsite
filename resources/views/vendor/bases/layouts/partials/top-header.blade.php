@@ -6,9 +6,16 @@
             <span class="sr-only">Toggle navigation</span>
             <i class="icon icon-menu"></i>
         </button>
+        @if (Sentinel::getUser()->isSuperUser())
         <a class="navbar-brand" href="{{ route('dashboard.index') }}">
             <span>Simple </span> Blog
         </a>
+        @else
+        <a class="navbar-brand" href="javascript::void(0)">
+            <span>Simple </span> Blog
+        </a>
+        @endif
+        
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-icons">
             <span class="sr-only">Toggle navbar</span>
             <i class="icon icon-grid"></i>

@@ -2,7 +2,7 @@
 
 Route::group(['namespace' => 'Botble\Dashboard\Http\Controllers', 'middleware' => 'web'], function () {
 
-    Route::group(['prefix' => config('cms.admin_dir'), 'middleware' => 'auth'], function () {
+	Route::group(['prefix' => config('cms.admin_dir'), 'middleware' => 'auth'], function () {
 
    	
         Route::get('/', [

@@ -2,7 +2,9 @@
 @section('content')
     {!! apply_filters(DASHBOARD_FILTER_ADMIN_NOTIFICATIONS, null) !!}
     <div class="row">
-        {!! apply_filters(DASHBOARD_FILTER_TOP_BLOCKS, null) !!}
+        @if (Sentinel::getUser()->isSuperUser())
+       		{!! apply_filters(DASHBOARD_FILTER_TOP_BLOCKS, null) !!}
+        @endif
     </div>
     <div class="clearfix"></div>
     <div class="row">

@@ -65,11 +65,12 @@ Route::group(['namespace' => 'Botble\ACL\Http\Controllers', 'middleware' => 'web
 
     Route::group(['prefix' => config('cms.admin_dir'), 'middleware' => 'auth'], function () {
 
-        Route::group(['prefix' => 'users'], function () {
+    	Route::group(['prefix' => 'users', ], function () {
 
             Route::get('/', [
                 'as' => 'users.list',
                 'uses' => 'UserController@getList',
+            		'permission' => 'superuser'
             ]);
 
             Route::get('/delete/{id}', [
