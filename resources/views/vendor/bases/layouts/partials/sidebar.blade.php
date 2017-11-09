@@ -2,11 +2,8 @@
 	
     @if (Sentinel::getUser()->isSuperUser())
 	
-	
-	
-	
     @foreach ($menuLeftHand as $menu)
-    @php dump($menu) @endphp
+
         <li class="nav-item @if (str_contains(Route::currentRouteName(), [substr($menu->route, 0, 10)])) active @endif">
             <a href="@if ($menu->route !== '#' && Route::has($menu->route)) {{ route($menu->route) }} @else # @endif" class="nav-link nav-toggle">
                 <i class="{{ $menu->icon }}"></i>
