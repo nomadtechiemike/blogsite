@@ -4,6 +4,7 @@ return [
     'filter_enabled' => 'Advanced search filters enabled.',
     'id' => 'ID',
     'name' => 'Name',
+	'comment' => 'Comment',
     'slug' => 'Slug',
     'title' => 'Title',
     'order_by' => 'Order By',

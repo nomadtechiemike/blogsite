@@ -1,0 +1,9 @@
+{
+    "name": "Comment",
+    "provider": "Botble\\Comment\\Providers\\CommentServiceProvider",
+    "plugin": "Botble\\Comment\\Plugin",
+    "author": "Nirob",
+    "url": "http://aminirob.me",
+    "version": "1.0",
+    "description": "Comment"
+}

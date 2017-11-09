@@ -80,7 +80,8 @@
             "Botble\\AuditLog\\": "plugins/audit-log/src",
             "Botble\\LogViewer\\": "plugins/log-viewer/src",
             "Botble\\Backup\\": "plugins/backup/src",
-            "Botble\\Block\\": "plugins/block/src"
+            "Botble\\Block\\": "plugins/block/src",
+            "Botble\\Comment\\": "plugins/comment/src"
         }
     },
     "autoload-dev": {

@@ -67,7 +67,8 @@ use risul\LaravelLikeComment\Facade\LaravelLikeComment;
             <div class="facebook-comment">
                 @if (is_plugin_active('comment'))
                     <div id="my-comments"></div>
-                    {!! render_comment_block('#my-comments', Request::url()) !!}
+                    @include('laravelLikeComment::like', ['like_item_id' => $post->id])
+                   @include('laravelLikeComment::comment', ['comment_item_id' => $post->id])
                 @else
                    {{-- <div class="fb-comments" data-href="{{ Request::url() }}" data-numposts="5"></div> --}}
                    @include('laravelLikeComment::like', ['like_item_id' => $post->id])
