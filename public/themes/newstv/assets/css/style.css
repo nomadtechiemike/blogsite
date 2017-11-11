@@ -5618,8 +5618,14 @@ to {
 
 .footer {
 	padding-top: 20px;
-	font-size: 13px
+	font-size: 13px;
+	background-color: #ffffff !important;
+    color: #121a2d !important;
 }
+
+.nav-top {
+    background-color:#ffffff !important;
+    color:  #032140 !important;
 
 .footer-menu {
 	margin: 0 0 20px;
@@ -5742,7 +5748,7 @@ to {
 }
 
 .footer-txt img {
-	max-width: 100%;
+	width: 150px;
 	display: inline-block
 }
 
