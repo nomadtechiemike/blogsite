@@ -11,6 +11,7 @@ $GLOBALS['commentClass'] = -1;
         <form class="ui laravelComment-form form" id="{{ $comment_item_id }}-comment-form" data-parent="0" data-item="{{ $comment_item_id }}" style="display: none;">
             <div class="field">
                 <textarea id="0-textarea" rows="2" {{ $GLOBALS['commentDisabled'] }}></textarea>
+                <span class="warn"></span>
                 @if(!Sentinel::check())
                     <small>Please Log in to comment</small>
                 @endif
@@ -43,6 +44,7 @@ function dfs($comments, $comment){
             <form id="{{ $comment->id }}-reply-form" class="ui laravelComment-form form" data-parent="{{ $comment->id }}" data-item="{{ $comment->item_id }}" style="display: none;">
                 <div class="field">
                     <textarea id="{{ $comment->id }}-textarea" rows="2" {{ $GLOBALS['commentDisabled'] }}></textarea>
+                     <span class="warn"></span>
                     @if(!Sentinel::check())
                         <small>Please Log in to comment</small>
                     @endif
