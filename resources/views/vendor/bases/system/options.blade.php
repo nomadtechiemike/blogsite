@@ -2,7 +2,7 @@
 @section('content')
     <div class="admin-grid">
         <div class="row">
-        <!-- 
+        
           <div class="col-md-4">
                 <div class="list-group config-item">
                     <a href="{{ route('system.menu.left-hand') }}" class="list-group-item">
@@ -11,7 +11,7 @@
                         <p class="list-group-item-text">{{ trans('bases::system.options.menu_left_hand_description') }}</p>
                     </a>
                 </div>
-            </div> -->
+            </div> 
         
 
             <div class="col-md-4">
