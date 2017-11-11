@@ -32,9 +32,9 @@
                             <img src="{{ url(ThemeOption::getOption('logo')) }}" alt="{{ setting('site_title') }}">
                         </a>
                     </h1>
-                    <div class="header-content-right">
+             <!--   <div class="header-content-right">
                         <p><img alt="Banner" src="{{ url(ThemeOption::getOption('top_banner', '/themes/newstv/assets/images/banner.png')) }}" style="width: 728px; height: 90px;"></p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

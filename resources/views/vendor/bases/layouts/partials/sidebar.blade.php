@@ -24,12 +24,6 @@
             @endif
         </li>
     @endforeach
-		<li class="nav-item @if (str_contains(Route::currentRouteName(), [substr($menu->route, 0, 10)])) active @endif">
-            <a href="@if ($menu->route !== '#' && Route::has($menu->route)) {{ route($menu->route) }} @else # @endif" class="nav-link nav-toggle">
-                <i class="{{ $menu->icon }}"></i>
-                <span class="title">{{ $menu->name }} {!! apply_filters(BASE_FILTER_APPEND_MENU_NAME, null, $menu->route) !!}</span>
-            </a>
-         </li>
         <li @if (str_contains(Route::currentRouteName(), ['system.'])) class="active" @endif>
             <a href="{{ route('system.options') }}">
                 <i class="fa fa-shield"></i>
