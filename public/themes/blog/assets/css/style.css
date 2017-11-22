@@ -1,0 +1,72 @@
+img.wp-smiley, img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+
+
+img#wpstats {
+	display: none
+}
+
+.ai1ec-single-event .ai1ec-event-avatar {
+	float: right;
+	margin: 15px;
+}
+
+.post-type-archive-bdu-badge a.thumbnail img {
+	width: 150px;
+}
+
+#subscribe-email input {
+	color: #000;
+}
+
+input[type="submit"] {
+	color: #27AAE1;
+}
+
+li.nav-item.dropdown {
+	margin-left: -5px !important;
+}
+
+.btn-welcome {
+	font-size: 14px;
+	padding: 0 12px;
+	margin-top: 10px;
+	margin-left: 0px;
+}
+
+.popup-box .popup-message-input {
+	padding-left: 10px;
+}
+
+.beta {
+	border: 3px solid green;
+	background-color: #d5fdd5;
+	border-radius: 10px;
+	margin-top: 15px;
+	padding: 7px;
+}
+
+.upcoming {
+	background-color: #d5fdd5;
+	border-radius: 5px;
+	padding: 5px;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    display: block;
+    padding-top: .425rem;
+    padding-bottom: .425rem;
+    padding-right: 1em ;
+    padding-left: 1em;
+}

@@ -1,0 +1,232 @@
+:root {
+  --chatbot-color: rgb(35, 40, 45);
+  --chatbot-text-color: white;
+}
+
+.drop-shadow
+{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.drop-shadow:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25), 0 8px 8px rgba(0,0,0,0.22);
+}
+
+.animated {
+  -webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  -moz-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  -ms-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  -o-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.overflow-hidden
+{
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#watson-fab-float
+{
+  position: fixed;
+  z-index: 999999;
+}
+
+#watson-fab
+{
+  cursor: pointer;
+  width: 4em;
+  height: 4em;
+  border-radius: 2em;
+  text-align: left;
+  background-color: var(--chatbot-color);
+  color: var(--chatbot-text-color);
+}
+
+#watson-fab .dashicons
+{
+  margin-left: 0.34em;
+  font-size: 2.4em;
+  line-height: 1.7em;
+}
+
+#watson-float
+{
+  position: fixed;
+  z-index: 100000;
+}
+
+#watson-box
+{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+#watson-box .watson-font
+{
+  line-height: 1.5em;
+  font-size: 11pt;
+}
+
+#watson-box #messages > div:not(.message) > a
+{
+  color: var(--chatbot-color);
+  cursor: pointer;
+}
+#watson-box #messages > div:not(.message) > a:hover
+{
+  opacity: 0.75;
+}
+
+#watson-box #watson-header
+{
+  padding: 0.5em 0.6em;
+  height: 2.5em;
+  font-weight: 600;
+  color: var(--chatbot-text-color);
+  background-color: var(--chatbot-color);
+  cursor: pointer;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+#watson-box #watson-header .popup-control
+{
+  float: right;
+  font-size: 1.35em;
+  margin-left: 0.3em;
+  opacity: 0.6;
+}
+
+#watson-box #watson-header:hover .popup-control
+{
+  opacity: 0.9;
+}
+
+#message-container
+{
+  position: relative;
+  flex-grow: 1;
+  width: 100%;
+  border-bottom: 1px solid rgb(215, 215, 215);
+  background-color: rgb(235, 235, 235);
+}
+
+#message-container #messages
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  padding-bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+#message-container:after
+{
+  content: '';
+  display: block;
+  box-shadow: inset 0  8px 12px -9px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 8px;
+  width: 100%;
+  border: none;
+}
+
+#watson-box .message-form
+{
+  height: 2.75em;
+  margin: 0;
+}
+
+.message-form .message-input
+{
+  height: 100%;
+  width: 100%;
+  border: 0;
+  padding: 0 0.75em;
+  background-color: #fff;
+}
+
+.message-form .message-input:focus
+{
+  background-color: #fff;
+}
+
+#message-container #messages .message
+{
+  clear: both;
+  border-radius: 1.4em;
+  margin-bottom: 10px;
+  padding: 0.5em 0.8em;
+  max-width: 80%;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+#message-container #messages .watson-message
+{
+  float: left;
+  background-color: var(--chatbot-color);
+  color: var(--chatbot-text-color);
+}
+
+#message-container #messages .user-message
+{
+  float: right;
+  background-color: white;
+  color: rgb(35, 40, 45);
+}
+
+@media (max-width:768px)
+{
+  #watson-box .watson-font
+  {
+    font-size: 16px;
+  }
+
+  #watson-box
+  {
+    width: 100%;
+    height: 100%;
+  }
+
+  #watson-float
+  {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  #watson-box #watson-header 
+  {
+    height: 48px;
+    line-height: 48px;
+    padding: 0 16px;
+  }
+
+  #watson-box #watson-header .watson-font, #watson-box #watson-header .popup-control
+  {
+    line-height: 48px;
+  }
+
+  #watson-box .message-form
+  {
+    height: 48px;
+    width: 100vw;
+  }
+}
