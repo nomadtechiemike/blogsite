@@ -49,6 +49,12 @@ class RouteServiceProvider extends ServiceProvider
                     'uses' => 'PublicController@getView',
                 ]);
 
+                $this->get('/our/courses.html', [
+                		'as' => 'public.courses',
+                		'uses' => 'PublicController@getCourses',
+                ]);
+                
+                
                 $this->get('/tag/{slug}.html', [
                     'as' => 'public.tag',
                     'uses' => 'PublicController@getByTag',

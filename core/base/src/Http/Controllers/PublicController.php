@@ -88,9 +88,9 @@ class PublicController extends Controller
             SeoHelper::setTitle($post->name)->setDescription($post->description);
 
             admin_bar()->registerLink(trans('blog::posts.edit_this_post'), route('posts.edit', $post->id));
-
+			$body_class = "archive post-type-archive post-type-archive-bdu-learn single single-bdu-learn";
             Theme::breadcrumb()->add(__('Home'), route('public.index'))->add($post->name, route('public.single.detail', $slug));
-            return Theme::scope('post', compact('post'))->render();
+            return Theme::scope('post', compact('post', 'body_class'))->render();
         } else {
 
             $page = $pageRepository->getBySlug($slug, true);
@@ -102,9 +102,9 @@ class PublicController extends Controller
                 }
 
                 admin_bar()->registerLink(trans('pages::pages.edit_this_page'), route('pages.edit', $page->id));
-
+                $body_class = "archive post-type-archive post-type-archive-bdu-learn single single-bdu-learn";
                 Theme::breadcrumb()->add(__('Home'), route('public.index'))->add($page->name, route('public.single.detail', $slug));
-                return Theme::scope('page', compact('page'))->render();
+                return Theme::scope('page', compact('page', 'body_class'))->render();
             } else {
                 $category = $categoryRepository->getBySlug($slug, true);
                 if (!empty($category)) {
@@ -115,13 +115,27 @@ class PublicController extends Controller
                     $allRelatedCategoryIds = array_unique(array_merge($categoryRepository->getAllRelatedChildrenIds($category), [$category->id]));
 
                     $posts = $postRepository->getByCategory($allRelatedCategoryIds, 12);
+                    $body_class = "single single-bdu-learn";
 
                     Theme::breadcrumb()->add(__('Home'), route('public.index'))->add($category->name, route('public.single.detail', $slug));
-                    return Theme::scope('category', compact('category', 'posts'))->render();
+                    return Theme::scope('category', compact('category', 'posts', 'body_class'))->render();
                 }
             }
         }
         return abort(404);
+    }
+    
+    public function getCourses(){
+    	$posts = get_all_posts();
+    	
+    	if (!empty($posts)) {
+    		//SeoHelper::setTitle($post->name)->setDescription($post->description);
+    		//admin_bar()->registerLink(trans('blog::posts.edit_this_post'), route('posts.edit', $post->id));
+    		$body_class = "blog";
+    		//Theme::breadcrumb()->add(__('Home'), route('public.index'))->add($post->name, route('public.single.detail', $slug));
+    		return Theme::scope('courses', compact('posts', 'body_class'))->render();
+    	}
+    	return abort(404);
     }
     
     public function getRegister(){

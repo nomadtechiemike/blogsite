@@ -76,7 +76,9 @@
 
 .course.card .course-org {
 	font-weight: 300;
-	margin-right: .125em
+	margin-right: .125em;
+	margin-top: 10px;
+    display: inline-block;
 }
 
 .course.card .course-code {
@@ -751,7 +753,8 @@ a img.aligncenter {
 	vertical-align: middle;
 	color: #fff;
 	font-weight: 700;
-	line-height: 22px
+	line-height: 22px;
+	font-size: 30px;
 }
 
 .front-page section.social-good {

@@ -48,6 +48,7 @@
 
                 @php do_action(BASE_ACTION_META_BOXES, 'category', 'top', $category) @endphp
                 @php do_action(BASE_ACTION_META_BOXES, 'category', 'side', $category) @endphp
+                
             </div>
         </div>
     {!! Form::close() !!}

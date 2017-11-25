@@ -22,6 +22,8 @@ class Theme implements ThemeContract
      * Theme namespace.
      */
     public static $namespace = 'theme';
+    
+    public $arguments_data;
 
     /**
      * Repository config.
@@ -826,7 +828,8 @@ class Theme implements ThemeContract
 
         // Keeping arguments.
         $this->arguments = $args;
-
+			
+        $this->view->share('body_class', isset($args['body_class']) ? $args['body_class'] : null );
         
         $content = $this->view->make($view, $args)->render();
         
@@ -853,7 +856,6 @@ class Theme implements ThemeContract
      */
     public function scope($view, $args = [])
     {
-
         $viewDir = $this->getConfig('containerDir.view');
 
         // Add namespace to find in a theme path.
@@ -900,6 +902,7 @@ class Theme implements ThemeContract
     {
         return $this->arguments;
     }
+    
 
     /**
      * Get a argument assigned to content.
