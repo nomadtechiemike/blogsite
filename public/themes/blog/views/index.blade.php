@@ -102,14 +102,14 @@
 							
                     @if (Route::currentRouteName() == 'public.index')
                         @php
-                            $featured = get_all_categories(['featured' => '1']);
+                            $featured = get_all_categories(['featured' => '1', 'parent_id' => 0]);
                         @endphp
                         @if (count($featured) > 0)
                         @foreach ($featured as $feature_item)
                                 
                             <div class="col-sm-6 col-lg-4">
 								<div class="learning-path-box">
-									<a href="{{ route('public.single.detail', $feature_item->slug) }}">
+									<a href="{{ route('public.learn.detail', $feature_item->slug) }}">
 										<div class="learning-path-card red">
 											<div class="learning-path-image">
 												<i class="fa {{$feature_item->icon}}" aria-hidden="true"></i>

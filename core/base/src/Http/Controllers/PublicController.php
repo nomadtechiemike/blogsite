@@ -125,22 +125,64 @@ class PublicController extends Controller
         return abort(404);
     }
     
+    public function singlePost($slug, PostInterface $postRepository){
+    	$post = $postRepository->getBySlug($slug, true);
+    	
+    	if (!empty($post)) {
+    		
+    		Helper::handleViewCount($post, 'viewed_post');
+    		
+    		SeoHelper::setTitle($post->name)->setDescription($post->description);
+    		$body_class = "archive post-type-archive post-type-archive-bdu-learn single single-bdu-learn";
+    		return Theme::scope('post', compact('post', 'body_class'))->render();
+    	}
+    	return abort(404);
+    }
+    
+    public function getLearningPath(){
+    	$body_class = "archive post-type-archive post-type-archive-bdu-learn single single-bdu-learn";
+    	return Theme::scope('learning_paths', compact('post', 'body_class'))->render();
+    }
+    
     public function getCourses(){
     	$posts = get_all_posts();
     	
     	if (!empty($posts)) {
     		//SeoHelper::setTitle($post->name)->setDescription($post->description);
     		//admin_bar()->registerLink(trans('blog::posts.edit_this_post'), route('posts.edit', $post->id));
-    		$body_class = "blog";
+    		$body_class = "blog archive post-type-archive post-type-archive-bdu-learn single single-bdu-learn";
     		//Theme::breadcrumb()->add(__('Home'), route('public.index'))->add($post->name, route('public.single.detail', $slug));
     		return Theme::scope('courses', compact('posts', 'body_class'))->render();
     	}
     	return abort(404);
     }
     
+    
+    public function getLogin(){
+    	$body_class = "ltr  lang_en";
+    	//Theme::breadcrumb()->add(__('Home'), route('public.index'))->add($post->name, route('public.single.detail', $slug));
+    	$position_property = 'unset !important';
+    	return Theme::scope('auth.login', compact( 'position_property' , 'body_class'))->render();
+    	
+    }
+    
+    
     public function getRegister(){
-    	Theme::breadcrumb()->add('Home', route('public.register'));
-    	return Theme::scope('auth.signup.index')->render();
+    	$body_class = "ltr  lang_en";
+    	$position_property = "absolute !important";
+    	return Theme::scope('auth.register', compact( 'position_property' , 'body_class'))->render();
+    }
+    
+    public function learnCourse($slug, CategoryInterface $categoryRepository){
+    	
+    	$category = $categoryRepository->getBySlug($slug, true);
+    	if (!empty($category)) {
+    		$courses = get_all_categories(['parent_id' => $category->id]);
+    		SeoHelper::setTitle($category->name)->setDescription($category->description);
+    		$body_class = "archive post-type-archive post-type-archive-bdu-learn single single-bdu-learn";
+    		return Theme::scope('learningpath', compact('category', 'courses', 'body_class'))->render();
+    	}
+    	return abort(404);
     }
     
     public function postRegister(Request $request)

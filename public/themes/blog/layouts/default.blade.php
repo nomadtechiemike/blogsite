@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,14 +10,13 @@
         {!! Theme::asset()->scripts() !!}
     </head>
     
-    <body class="home page-template page-template-page-templates page-template-front page-template-page-templatesfront-php page {{$body_class}}">
+    <body class="{{$body_class}}">
 		{!! Theme::partial('header') !!}
 			<div class="main-wrapper">
 <!-- 				<div class="main"> -->
 					{!! Theme::content() !!}
 <!-- 				</div> -->
 			</div>
-
 		{!! Theme::partial('footer') !!}
         
         {!! Theme::asset()->container('footer')->scripts() !!}

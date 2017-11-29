@@ -37,21 +37,49 @@ class RouteServiceProvider extends ServiceProvider
                 		'as' => 'public.register',
                 		'uses' => 'PublicController@getRegister',
                 ]);
+                
+                $this->get('/login.html', [
+                		'as' => 'public.login',
+                		'uses' => 'PublicController@getLogin',
+                ]);
+                
 
                 $this->post('/register.html', [
                 		'as' => 'public.register.user',
                 		'uses' => 'PublicController@postRegister',
                 ]);
                 
-
-                $this->get('/{slug}.html', [
+                $this->get('/courses.html', [
+                		'as' => 'public.courses',
+                		'uses' => 'PublicController@getCourses',
+                ]);
+                
+                $this->get('/learning-paths.html', [
+                		'as' => 'public.learning.path',
+                		'uses' => 'PublicController@getLearningPath',
+                ]);
+                
+                
+                
+                $this->get('/learn/{slug}.html', [
+                		'as' => 'public.learn.detail',
+                		'uses' => 'PublicController@learnCourse',
+                ]);
+                
+                
+                $this->get('{slug}.html', [
                     'as' => 'public.single.detail',
                     'uses' => 'PublicController@getView',
                 ]);
-
-                $this->get('/our/courses.html', [
-                		'as' => 'public.courses',
-                		'uses' => 'PublicController@getCourses',
+                
+                $this->get('/course/{slug}.html', [
+                		'as' => 'public.course.detail',
+                		'uses' => 'PublicController@getView',
+                ]);
+                
+                $this->get('/lession/{slug}.html', [
+                		'as' => 'public.post.detail',
+                		'uses' => 'PublicController@singlePost',
                 ]);
                 
                 

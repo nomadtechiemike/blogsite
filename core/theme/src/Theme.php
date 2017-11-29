@@ -830,6 +830,7 @@ class Theme implements ThemeContract
         $this->arguments = $args;
 			
         $this->view->share('body_class', isset($args['body_class']) ? $args['body_class'] : null );
+        $this->view->share('args', $args );
         
         $content = $this->view->make($view, $args)->render();
         

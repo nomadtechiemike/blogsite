@@ -20,9 +20,9 @@
 			
 				<ul class="nav navbar-nav pull-md-right">
 					<li class="nav-item"><a class="nav-link"
-						href="https://courses.cognitiveclass.ai/login">Login</a></li>
+						href="{{ url('/login.html') }}">Login</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="https://courses.cognitiveclass.ai/register">Sign Up</a></li>
+						href="{{ url('/register.html') }}">Sign Up</a></li>
 
 				</ul>
 <!--   

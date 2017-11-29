@@ -1,21 +1,6 @@
-<footer class="footer">
-		<nav class="navbar">
-			<div class="container-fluid">
+<div class="footerr">
 				<div class="row">
-					<div class="col-md-6">
-						
-						{!!
-			            	Menu::generateMenu([
-			                'slug' => 'footer-menu',
-			                'options' => ['class' => 'nav navbar-nav'],
-			                'view' => 'footer-menu'
-			                ])
-           				!!}
-						
-						
-					</div>
-					<div class="col-md-4 social">
-						<h6>Follow us</h6>
+					<div class="col-md-12 social">
 						<ul class="list-inline social-button-list">
 							<li class="list-inline-item"><a class="social-button"
 								aria-label="Facebook"
@@ -44,9 +29,9 @@
 								target="_blank"> <i class="fa fa-youtube" aria-hidden="true"></i>
 							</a></li>
 						</ul>
+						<h6>&copy; 2017 Simple Blog</h6>
 					</div>
 					
 				</div>
-			</div>
-		</nav>
-	</footer>
+
+	</div>
