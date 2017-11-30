@@ -1,42 +1,14 @@
-<!-- <div>
-    <h3>{{ $post->name }}</h3>
-    {!! Theme::breadcrumb()->render() !!}
-</div>
-<header>
-    <h3>{{ $post->name }}</h3>
-    <div>
-        @if (!$post->categories->isEmpty())
-            <span>
-                <a href="{{ route('public.single.detail', $post->categories->first()->slug) }}">{{ $post->categories->first()->name }}</a>
-            </span>
-        @endif
-        <span><a href="#">{{ date_from_database($post->created_at, 'M d, Y') }}</a></span>
-        <span><a href="{{ route('public.author', $post->user->username) }}">{{ $post->user->getFullName() }}</a></span>
-
-        @if (!$post->tags->isEmpty())
-            <span>
-                @foreach ($post->tags as $tag)
-                    <a href="{{ route('public.tag', $tag->slug) }}">{{ $tag->name }}</a>
-                @endforeach
-            </span>
-        @endif
-    </div>
-</header>
-{!! $post->content !!}
-<footer>
-    @foreach (get_related_posts($post->slug, 2) as $related_item)
-        <div>
-            <article>
-                <div><a href="{{ route('public.single.detail', $related_item->slug) }}"></a>
-                    <img src="{{ url($related_item->image) }}" alt="{{ $related_item->name }}">
-                </div>
-                <header><a href="{{ route('public.single.detail', $related_item->slug) }}"> {{ $related_item->name }}</a></header>
-            </article>
-        </div>
-    @endforeach
-</footer> -->
-
-
+<?php
+use risul\LaravelLikeComment\Facade\LaravelLikeComment;
+?>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
+    <link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet">
+    <style>
+    .ui.comments .comment .avatar img, .ui.comments .comment img.avatar {width: 38px !important; height: 38px !important;}
+    </style>
 
 <div class="course course-details">
 <section class="course-header bg-primary">
@@ -119,7 +91,10 @@
 			<section class="about">
 				{!! $post->content !!}
 			</section>
-			
+			<div id="my-comments"></div>
+                @include('laravelLikeComment::like', ['like_item_id' => $post->id])
+                @include('laravelLikeComment::comment', ['comment_item_id' => $post->id])
+       </section>         
 	</div>
 </div>
 </div>

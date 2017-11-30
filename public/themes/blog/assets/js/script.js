@@ -1,4 +1,5 @@
 $('.laravelLike-icon').on('click', function(){
+	console.log($(this));
   if($(this).hasClass('disabled'))
     return false;
 
@@ -47,7 +48,7 @@ $(document).on('submit', '.laravelComment-form', function(){
     var parent = $(this).data('parent');
     var item_id = $(this).data('item');
     var comment = $('textarea#'+parent+'-textarea').val();
-    if(comment){
+
     $.ajax({
          method: "get",
          url: "/laravellikecomment/comment/add",
@@ -69,7 +70,6 @@ $(document).on('submit', '.laravelComment-form', function(){
       .fail(function(msg){
         console.log(msg);
       });
-    }
 
     return false;
 });

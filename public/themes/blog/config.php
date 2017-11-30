@@ -65,12 +65,12 @@ return [
         	$theme->asset()->usePath()->add('style-style.min41fe', 'css/style.min41fe.css');
         	$theme->asset()->usePath()->add('style-vendor6e0e', 'css/vendor6e0e.css');
 
-        	
-        	$theme->asset()->usePath()->add('script-app6e0e', 'js/app6e0e.js');
-        	$theme->asset()->usePath()->add('script-app7bcd', 'js/app7bcd.js');
-        	$theme->asset()->usePath()->add('script-calendar72e5', 'js/calendar72e5.js');
-        	$theme->asset()->usePath()->add('script-facebook-embed', 'js/facebook-embed.js');
+
         	$theme->asset()->usePath()->add('script-jquery.min', 'js/jquery.min.js');
+        	$theme->asset()->usePath()->add('script-app6e0e', 'js/app6e0e.js');
+        	//$theme->asset()->usePath()->add('comment-script', 'js/script.js');
+        	$theme->asset()->container('footer')->usePath()->add('comment-script', 'js/script.js', array('core-script'));
+        	$theme->asset()->usePath()->add('script-calendar72e5', 'js/calendar72e5.js');
         	$theme->asset()->usePath()->add('script-jquery-migrate.min', 'js/jquery-migrate.min.js');
         	$theme->asset()->usePath()->add('script-jquery.cookied279', 'js/jquery.cookied279.js');
         	$theme->asset()->usePath()->add('script-main', 'js/main.js');
@@ -80,7 +80,7 @@ return [
         	$theme->asset()->usePath()->add('script-sharing5156', 'js/sharing5156.js');
         	$theme->asset()->usePath()->add('script-twitter-timelinecce7', 'js/twitter-timelinecce7.js');
         	$theme->asset()->usePath()->add('script-vendor6e0e', 'js/vendor6e0e.js');
-        	$theme->asset()->usePath()->add('script-wpgroho7bcd', 'js/wpgroho7bcd.js');
+        	//$theme->asset()->usePath()->add('script-wpgroho7bcd', 'js/wpgroho7bcd.js');
         	
         	
         	
