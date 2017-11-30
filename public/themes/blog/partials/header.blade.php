@@ -19,10 +19,13 @@
             !!}
 			
 				<ul class="nav navbar-nav pull-md-right">
-					<li class="nav-item"><a class="nav-link"
-						href="{{ url('/login.html') }}">Login</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="{{ url('/register.html') }}">Sign Up</a></li>
+							@if(!Sentinel::check())
+                        		<li class="nav-item"><a class="nav-link " href="{{ url('/register.html') }}">Register</a></li>
+                        		<li class="nav-item"><a class="nav-link " href="{{ url('/admin/login') }}">Login</a></li>
+                        	@else
+                        		<li class="nav-item"><a class="nav-link " href="{{ url('/admin/users/profile/'.Sentinel::check()->id) }}">{{ Sentinel::check()->username }}</a></li>
+                        		<li class="nav-item"><a class="nav-link " href="{{ url('/admin/logout') }}">Logout</a></li>
+                        	@endif
 
 				</ul>
 <!--   

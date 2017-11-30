@@ -35,13 +35,12 @@
 
 						<div class="form-field email-email">
 
-							<label for="login-email"> Email </label> <input id="login-email"
+							<label for="login-email"> Username </label> <input id="login-email"
 								type="email" name="email" class="input-block "
-								aria-describedby="login-email-desc" minlength="3"
-								maxlength="254" aria-required="true" required=""
+								minlength="3"  maxlength="254" aria-required="true" required=""
 								placeholder="Email Address" value=""> <span
-								class="tip tip-input" id="login-email-desc">The email address
-								you used to register</span>
+								class="tip tip-input" id="login-email-desc">The Username
+								you chosed</span>
 
 
 
