@@ -127,11 +127,11 @@ class PublicController extends Controller
     }
     
     public function getBlog(PostInterface $postRepository, CategoryInterface $categoryRepository){
-    	$category = Category::find(13);
+    	$category = $categoryRepository->getBySlug('blog', true);
     	if (!empty($category)) {
     		SeoHelper::setTitle($category->name)->setDescription($category->description);
     		$popular = $postRepository->getPopularPosts(10);
-    		$posts = Category::find(13)->posts;
+    		$posts = $category->posts;
     		$body_class = "blog";
     		return Theme::scope('blogs', compact('category', 'posts',  'popular' , 'body_class'))->render();
     	}
