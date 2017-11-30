@@ -48,6 +48,9 @@ class Category extends Eloquent
         return $this->belongsToMany(Post::class, 'post_category');
     }
 
+    
+    
+
     /**
      * @return mixed
      * @author Sang Nguyen

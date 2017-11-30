@@ -25,6 +25,7 @@ use Exception;
 use Botble\ACL\Models\UserMeta;
 use Session;
 use Hash;
+use Botble\Blog\Models\Category;
 
 class PublicController extends Controller
 {
@@ -125,6 +126,18 @@ class PublicController extends Controller
         return abort(404);
     }
     
+    public function getBlog(PostInterface $postRepository, CategoryInterface $categoryRepository){
+    	$category = Category::find(13);
+    	if (!empty($category)) {
+    		SeoHelper::setTitle($category->name)->setDescription($category->description);
+    		$popular = $postRepository->getPopularPosts(10);
+    		$posts = Category::find(13)->posts;
+    		$body_class = "blog";
+    		return Theme::scope('blogs', compact('category', 'posts',  'popular' , 'body_class'))->render();
+    	}
+    	return abort(404);
+    }
+    	
     public function singlePost($slug, PostInterface $postRepository){
     	$post = $postRepository->getBySlug($slug, true);
     	
@@ -184,6 +197,19 @@ class PublicController extends Controller
     	}
     	return abort(404);
     }
+    
+    public function getBlogSingle($slug, PostInterface $postRepository){
+    	$post = $postRepository->getBySlug($slug, true);
+    	
+    	if (!empty($post)) {
+     		$body_class = "post-template-default single single-post postid-5324 single-format-standard";
+     		$popular = $postRepository->getPopularPosts(10);
+    		
+     		return Theme::scope('blog_single', compact('post', 'popular' ,'body_class'))->render();
+    	}
+    	abort(404);
+    }
+    
     
     public function postRegister(Request $request)
     {

@@ -59,7 +59,22 @@ class RouteServiceProvider extends ServiceProvider
                 		'uses' => 'PublicController@getLearningPath',
                 ]);
                 
+
+                $this->get('/blog.html', [
+                		'as' => 'public.blog',
+                		'uses' => 'PublicController@getBlog',
+                ]);
+ 
                 
+                $this->get('/blog.html', [
+                		'as' => 'public.blog',
+                		'uses' => 'PublicController@getBlog',
+                ]);
+                
+                $this->get('/blog/{slug}.html', [
+                		'as' => 'public.blog.single',
+                		'uses' => 'PublicController@getBlogSingle',
+                ]);
                 
                 $this->get('/learn/{slug}.html', [
                 		'as' => 'public.learn.detail',
